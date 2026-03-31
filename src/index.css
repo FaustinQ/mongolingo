@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* On force un style de base pour tester si ça charge */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+    margin: 0;
+    font-family: system-ui, sans-serif;
+  }
+}

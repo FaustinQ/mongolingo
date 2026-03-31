@@ -1,0 +1,46 @@
+// load('path/to/question.shema.json')
+
+db.createCollection("questions", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["question_id", "choix_multiple", "enonce", "difficulte", "solution", "explication"],
+      properties: {
+        question_id: {
+          bsonType: "int",
+          description: "Identifiant unique de la question",
+        },
+        choix_multiple: {
+          bsonType: "bool",
+          description: "Indique si la question est à choix multiple ou non"
+        },
+        enonce: {
+          bsonType: "string",
+          description: "Texte de la question posée à l'utilisateur"
+        },
+        difficulte: {
+          bsonType: "string",
+          enum: ["Facile", "Intermédiaire", "Difficile", "Expert"],
+          description: "Niveau de progression pour l'utilisateur"
+        },
+        propositions: {
+          bsonType: "array",
+          items: {
+            bsonType: "string"
+          },
+          description: "Liste des propositions de réponses pour les questions à choix multiple"
+        },
+        solution: {
+          bsonType: "string",
+          description: "La requête MongoDB sous forme de texte"
+        },
+        explication: {
+          bsonType: "string",
+          description: "Texte pédagogique"
+        }
+      }
+    }
+  }
+});
+
+db.questions.createIndex({ "question_id": 1 }, { unique: true });

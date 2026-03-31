@@ -1,0 +1,362 @@
+[
+    {
+        "question_id": 1,
+        "choix_multiple": true,
+        "enonce": "Comment récupérer tous les points d'eau de la base de données ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.waterpoints.find()",
+            "db.waterpoints.getAll()",
+            "db.waterpoints.retrieve()",
+            "db.waterpoints.fetch()"
+        ],
+        "solution": "db.waterpoints.find()",
+        "explication": "Pour récupérer tous les points d'eau de la base de données, vous pouvez utiliser la commande db.waterpoints.find()."
+    },
+    {
+        "question_id": 2,
+        "choix_multiple": true,
+        "enonce": "Comment créer ou basculer sur la base de données 'waterpoints' dans le shell MongoDB ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.createDatabase('waterpoints')",
+            "new Database('waterpoints')",
+            "use waterpoints",
+            "db.new('waterpoints')"
+        ],
+        "solution": "use waterpoints",
+        "explication": "La commande 'use' permet de basculer sur une base de données existante ou de préparer la création d'une nouvelle base qui sera effective dès la première insertion."
+    },
+    {
+        "question_id": 3,
+        "choix_multiple": true,
+        "enonce": "Que se passe-t-il lors de l'exécution de db.dropDatabase() ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "Supprime la base de données actuelle et toutes ses collections",
+            "Supprime uniquement les collections vides",
+            "Supprime le nom de la base mais garde les fichiers de données",
+            "Génère une erreur si la base n'est pas vide"
+        ],
+        "solution": "Supprime la base de données actuelle et toutes ses collections",
+        "explication": "Cette méthode supprime physiquement les fichiers de données associés à la base de données sur laquelle vous êtes positionné."
+    },
+    {
+        "question_id": 4,
+        "choix_multiple": true,
+        "enonce": "Quelle méthode est utilisée pour supprimer une collection entière (et ses index) ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.collection.removeAll()",
+            "db.collection.drop()",
+            "db.collection.deleteMany({})",
+            "db.removeCollection('nom_coll')"
+        ],
+        "solution": "db.collection.drop()",
+        "explication": "La méthode drop() est plus efficace que deleteMany() car elle supprime la structure de la collection et ses index en une seule opération."
+    },
+    {
+        "question_id": 5,
+        "choix_multiple": true,
+        "enonce": "Quelle méthode permet d'insérer un tableau de documents en une seule fois ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "insertOne()",
+            "insertMany()",
+            "bulkInsert()",
+            "addDocuments()"
+        ],
+        "solution": "insertMany()",
+        "explication": "insertMany() prend un tableau d'objets en argument et minimise les allers-retours avec le serveur pour de meilleures performances."
+    },
+    {
+        "question_id": 6,
+        "choix_multiple": true,
+        "enonce": "Que fait précisément la méthode updateOne() ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "Met à jour tous les documents correspondant au filtre",
+            "Met à jour uniquement le premier document correspondant au filtre",
+            "Remplace l'intégralité du document par un nouveau",
+            "Supprime le document avant de le recréer"
+        ],
+        "solution": "Met à jour uniquement le premier document correspondant au filtre",
+        "explication": "Même si plusieurs documents correspondent au filtre, seul le premier trouvé par MongoDB sera modifié par updateOne()."
+    },
+    {
+        "question_id": 7,
+        "choix_multiple": true,
+        "enonce": "Comment supprimer tous les documents qui correspondent à un filtre donné ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "deleteAll()",
+            "removeMany()",
+            "deleteMany()",
+            "dropDocuments()"
+        ],
+        "solution": "deleteMany()",
+        "explication": "deleteMany() permet de supprimer de 0 à N documents selon le critère de filtrage passé en paramètre."
+    },
+    {
+        "question_id": 8,
+        "choix_multiple": true,
+        "enonce": "Comment rechercher un document par son identifiant unique '_id' ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.collection.findById(id)",
+            "db.collection.find({ '_id': id })",
+            "db.collection.getDocument(id)",
+            "db.collection.findOne(id)"
+        ],
+        "solution": "db.collection.find({ '_id': id })",
+        "explication": "L'_id étant la clé primaire obligatoire dans MongoDB, on le recherche comme n'importe quel autre champ avec un objet de filtrage."
+    },
+    {
+        "question_id": 9,
+        "choix_multiple": true,
+        "enonce": "Que fait la méthode findOneAndDelete() ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [
+            "Supprime tous les documents correspondants",
+            "Recherche et renvoie le document, puis le supprime",
+            "Supprime le premier document trouvé sans le renvoyer",
+            "Remplace le document puis le supprime"
+        ],
+        "solution": "Recherche et renvoie le document, puis le supprime",
+        "explication": "C'est une opération atomique qui permet de récupérer l'état du document juste avant sa suppression définitive."
+    },
+    {
+        "question_id": 10,
+        "choix_multiple": true,
+        "enonce": "Comment requêter les documents où un champ spécifique est absent ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [
+            "{ champ: { $exists: false } }",
+            "{ champ: { $notexists: true } }",
+            "{ champ: { $missing: true } }",
+            "{ champ: null }"
+        ],
+        "solution": "{ champ: { $exists: false } }",
+        "explication": "L'opérateur $exists vérifie la présence ou l'absence d'un champ dans un document, quel que soit son contenu."
+    },
+    {
+        "question_id": 11,
+        "choix_multiple": true,
+        "enonce": "Quelle méthode permet de trouver un document et de le mettre à jour en une seule étape ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [
+            "updateOneAndFind()",
+            "modifyAndUpdate()",
+            "findOneAndUpdate()",
+            "replaceOneAndFind()"
+        ],
+        "solution": "findOneAndUpdate()",
+        "explication": "findOneAndUpdate() est très utile pour gérer des files d'attente ou des compteurs, car l'opération est atomique sur le document."
+    },
+    {
+        "question_id": 12,
+        "choix_multiple": true,
+        "enonce": "Comment compter le nombre total de points d'eau dans la collection ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.waterpoints.countDocuments({})",
+            "db.waterpoints.sum()",
+            "db.waterpoints.length()",
+            "db.waterpoints.aggregate({$count: 'total'})"
+        ],
+        "solution": "db.waterpoints.countDocuments({})",
+        "explication": "countDocuments() est la méthode recommandée pour compter les documents correspondant à un filtre (ici {} pour tous)."
+    },
+    {
+        "question_id": 13,
+        "choix_multiple": true,
+        "enonce": "Quelle requête permet de trouver les points d'eau ayant un statut 'PRIVE' ?",
+        "difficulte": "Facile",
+        "propositions": [
+            "db.waterpoints.find({ statut: 'PRIVE' })",
+            "db.waterpoints.find({ 'PRIVE' })",
+            "db.waterpoints.select({ statut: 'PRIVE' })",
+            "db.waterpoints.filter(statut == 'PRIVE')"
+        ],
+        "solution": "db.waterpoints.find({ statut: 'PRIVE' })",
+        "explication": "On passe un objet de filtrage à find() où la clé est le champ et la valeur le critère recherché."
+    },
+    {
+        "question_id": 14,
+        "choix_multiple": true,
+        "enonce": "Comment récupérer les points d'eau dont le débit à 1 bar est supérieur ou égal à 100 ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [
+            "db.waterpoints.find({ debit_1_bar: { $gte: 100 } })",
+            "db.waterpoints.find({ debit_1_bar: { $gt: 100 } })",
+            "db.waterpoints.find({ debit_1_bar: { $min: 100 } })",
+            "db.waterpoints.find({ $debit_1_bar: 100 })"
+        ],
+        "solution": "db.waterpoints.find({ debit_1_bar: { $gte: 100 } })",
+        "explication": "$gte signifie 'Greater Than or Equal' (supérieur ou égal)."
+    },
+    {
+        "question_id": 15,
+        "choix_multiple": true,
+        "enonce": "Comment afficher uniquement le 'numero_pei' et la 'commune' (sans l'_id) ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [
+            "db.waterpoints.find({}, { numero_pei: 1, insee5: 1, _id: 0 })",
+            "db.waterpoints.find({ projection: ['numero_pei', 'insee5'] })",
+            "db.waterpoints.find({}, { exclude: '_id' })",
+            "db.waterpoints.find({ _id: 0 })"
+        ],
+        "solution": "db.waterpoints.find({}, { numero_pei: 1, insee5: 1, _id: 0 })",
+        "explication": "Le second argument de find() est la projection. On met 1 pour inclure et 0 pour exclure."
+    },
+    {
+        "question_id": 16,
+        "choix_multiple": true,
+        "enonce": "Comment calculer la moyenne de la pression (press_debit) par département ?",
+        "difficulte": "Complexe",
+        "propositions": [
+            "db.waterpoints.aggregate([{ $group: { _id: '$num_dep', moyenne: { $avg: '$press_debit' } } }])",
+            "db.waterpoints.find({ $avg: 'press_debit' }).groupBy('num_dep')",
+            "db.waterpoints.aggregate([{ $match: { moyenne: '$press_debit' } }])",
+            "db.waterpoints.sumByGroup('num_dep', 'press_debit')"
+        ],
+        "solution": "db.waterpoints.aggregate([{ $group: { _id: '$num_dep', moyenne: { $avg: '$press_debit' } } }])",
+        "explication": "L'étape $group permet de regrouper par un champ (_id) et d'appliquer des accumulateurs comme $avg."
+    },
+    {
+        "question_id": 17,
+        "choix_multiple": true,
+        "enonce": "Quelle commande permet de trouver les points d'eau dans un rayon de 500m autour d'un point GPS ?",
+        "difficulte": "Complexe",
+        "propositions": [
+            "db.waterpoints.find({ location: { $near: { $geometry: { type: 'Point', coordinates: [long, lat] }, $maxDistance: 500 } } })",
+            "db.waterpoints.find({ $distance: 500 })",
+            "db.waterpoints.find({ location: { $within: 500 } })",
+            "db.waterpoints.find({ coordinates: { $near: [long, lat] } })"
+        ],
+        "solution": "db.waterpoints.find({ location: { $near: { $geometry: { type: 'Point', coordinates: [long, lat] }, $maxDistance: 500 } } })",
+        "explication": "$near nécessite un index 2dsphere et utilise la syntaxe GeoJSON pour définir le centre et la distance en mètres."
+    },
+    {
+        "question_id": 18,
+        "choix_multiple": true,
+        "enonce": "Lister les types de nature (type_nature) uniques ayant au moins 5 points d'eau disponibles.",
+        "difficulte": "Expert",
+        "propositions": [
+            "db.waterpoints.aggregate([{ $match: { disponibilite: 'DI' } }, { $group: { _id: '$type_nature', count: { $sum: 1 } } }, { $match: { count: { $gte: 5 } } }])",
+            "db.waterpoints.distinct('type_nature', { count: { $gt: 5 } })",
+            "db.waterpoints.find({ $count: { type_nature: { $gt: 5 } } })",
+            "db.waterpoints.group({ type_nature: 1 }).having({ count: 5 })"
+        ],
+        "solution": "db.waterpoints.aggregate([{ $match: { disponibilite: 'DI' } }, { $group: { _id: '$type_nature', count: { $sum: 1 } } }, { $match: { count: { $gte: 5 } } }])",
+        "explication": "Il faut d'abord filtrer ($match), puis grouper et compter ($group), puis filtrer sur le résultat du comptage ($match final)."
+    },
+    {
+        "question_id": 19,
+        "choix_multiple": false,
+        "enonce": "Écrivez la requête pour trouver tous les points d'eau situés dans le département 56 (champ 'num_dep').",
+        "difficulte": "Facile",
+        "propositions": [],
+        "solution": "db.waterpoints.find({num_dep:56})",
+        "explication": "On utilise la méthode find() avec un filtre simple sur le champ numérique num_dep."
+    },
+    {
+        "question_id": 20,
+        "choix_multiple": false,
+        "enonce": "Quelle requête permet de trier les points d'eau par 'debit_1_bar' du plus grand au plus petit ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.find().sort({debit_1_bar:-1})",
+        "explication": "La méthode sort() accepte -1 pour un tri décroissant et 1 pour un tri croissant."
+    },
+    {
+        "question_id": 21,
+        "choix_multiple": false,
+        "enonce": "Écrivez la requête pour trouver les points d'eau dont l'accessibilité est soit 'A', soit 'B'.",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.find({accessibilite:{$in:['A','B']}})",
+        "explication": "L'opérateur $in permet de comparer la valeur d'un champ à plusieurs éléments d'un tableau."
+    },
+    {
+        "question_id": 22,
+        "choix_multiple": false,
+        "enonce": "Comment limiter le résultat de votre recherche aux 5 premiers documents ?",
+        "difficulte": "Facile",
+        "propositions": [],
+        "solution": "db.waterpoints.find().limit(5)",
+        "explication": "Le curseur limit() permet de restreindre le nombre de documents retournés par la base."
+    },
+    {
+        "question_id": 23,
+        "choix_multiple": false,
+        "enonce": "Donnez la requête pour trouver les points d'eau où le volume d'eau minimum (vol_eau_min) est strictement supérieur à 120.",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.find({vol_eau_min:{$gt:120}})",
+        "explication": "$gt signifie 'Greater Than' (strictement supérieur)."
+    },
+    {
+        "question_id": 24,
+        "choix_multiple": false,
+        "enonce": "Écrivez la requête d'agrégation pour compter le nombre de points d'eau par 'statut'.",
+        "difficulte": "Complexe",
+        "propositions": [],
+        "solution": "db.waterpoints.aggregate([{$group:{_id:'$statut',total:{$sum:1}}}])",
+        "explication": "On utilise $group sur le champ statut, et on incrémente un compteur avec $sum: 1 pour chaque document."
+    },
+    {
+        "question_id": 25,
+        "choix_multiple": false,
+        "enonce": "Quelle commande permet de mettre à jour le statut en 'PUBLIC' pour le point d'eau ayant le 'numero_pei' 12345 ?",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.updateOne({numero_pei:12345},{$set:{statut:'PUBLIC'}})",
+        "explication": "L'opérateur $set est indispensable pour modifier uniquement un champ sans écraser tout le document."
+    },
+    {
+        "question_id": 26,
+        "choix_multiple": false,
+        "enonce": "Trouvez les points d'eau dont le 'type_nature' contient le texte 'PI' (utilisez une regex).",
+        "difficulte": "Complexe",
+        "propositions": [],
+        "solution": "db.waterpoints.find({type_nature:{$regex:/PI/}})",
+        "explication": "$regex permet de faire des recherches textuelles partielles ou complexes via des expressions régulières."
+    },
+    {
+        "question_id": 27,
+        "choix_multiple": false,
+        "enonce": "Écrivez la requête pour trouver les points d'eau disponibles ('DI') ET publics ('PUBLIC').",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.find({disponibilite:'DI',statut:'PUBLIC'})",
+        "explication": "Dans MongoDB, séparer les champs par une virgule dans le même objet équivaut à un opérateur logique AND."
+    },
+    {
+        "question_id": 28,
+        "choix_multiple": false,
+        "enonce": "Comment renommer le champ 'insee5' en 'code_commune' pour tous les documents ?",
+        "difficulte": "Expert",
+        "propositions": [],
+        "solution": "db.waterpoints.updateMany({},{$rename:{'insee5':'code_commune'}})",
+        "explication": "L'opérateur $rename permet de changer le nom d'une clé dans l'ensemble des documents."
+    },
+    {
+        "question_id": 29,
+        "choix_multiple": false,
+        "enonce": "Supprimez tous les points d'eau dont la disponibilité est 'ND' (Non Disponible).",
+        "difficulte": "Intermédiaire",
+        "propositions": [],
+        "solution": "db.waterpoints.deleteMany({disponibilite:'ND'})",
+        "explication": "deleteMany() supprime tous les documents qui valident la condition passée en filtre."
+    },
+    {
+        "question_id": 30,
+        "choix_multiple": false,
+        "enonce": "Quelle étape d'agrégation permet de filtrer les documents avant de les grouper ?",
+        "difficulte": "Facile",
+        "propositions": [],
+        "solution": "$match",
+        "explication": "$match est l'équivalent du 'WHERE' en SQL. Il est crucial de le placer au début du pipeline pour optimiser les performances."
+    }
+]

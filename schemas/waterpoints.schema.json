@@ -1,0 +1,99 @@
+db.createCollection("waterpoints", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "location", "date_crea", "date_maj", "utilisateur", "carto_ref", "statut", "debit_1_bar", "numero_pei", "insee5", "type_nature", "disponibilite", "num_dep"],
+            properties: {
+                _id: {
+                    bsonType: "objectId",
+                    description: "Identifiant unique de la source d'eau"
+                },
+                location: {
+                    bsonType: "object",
+                    required: ["type", "coordinates"],
+                    properties: {
+                        type: {
+                            bsonType: "string",
+                            enum: ["Point"],
+                            description: "Type de géométrie (ici, un point)"
+                        },
+                        coordinates: {
+                            bsonType: "array",
+                            items: {
+                                bsonType: "double"
+                            },
+                            description: "Coordonnées géographiques [longitude, latitude]"
+                        }
+                    }
+                },
+                date_crea: {
+                    bsonType: "date",
+                    description: "Date de création de la source d'eau"
+                },
+                date_maj: {
+                    bsonType: "date",
+                    description: "Date de la dernière mise à jour de la source d'eau"
+                },
+                utilisateur: {
+                    bsonType: "string",
+                    description: "Identifiant de l'utilisateur ayant créé ou mis à jour la source d'eau"
+                },
+                carto_ref: {
+                    bsonType: "int",
+                    description: "Référence cartographique de la source d'eau"
+                },
+                statut: {
+                    bsonType: "string",
+                    enum: ["PUBLIC", "PRIVE"],
+                    description: "Statut de la source d'eau (publique ou privée)"
+                },
+                press_debit: {
+                    bsonType: "double",
+                    description: "Pression de débit de la source d'eau en bars"
+                },
+                debit_1_bar: {
+                    bsonType: "double",
+                    description: "Débit de la source d'eau à 1 bar en litres par heure"
+                },
+                numero_pei: {
+                    bsonType: "int",
+                    description: "Numéro PEI de la source d'eau"
+                },
+                insee5: {
+                    bsonType: "int",
+                    description: "Code INSEE à 5 chiffres de la commune où se trouve la source d'eau"
+                },
+                type_nature: {
+                    bsonType: "string",
+                    description: "Type de nature de la source d'eau (ex: PI100)"
+                },
+                vol_eau_min: {
+                    bsonType: "double",
+                    description: "Volume d'eau minimum disponible à la source en litres"
+                },
+                accessibilite: {
+                    bsonType: "string",
+                    enum: ["A", "B", "C"],
+                    description: "Accessibilité de la source d'eau (A: accessible, B: partiellement accessible, C: non accessible)"
+                },
+                disponibilite: {
+                    bsonType: "string",
+                    enum: ["DI", "ND"],
+                    description: "Disponibilité de la source d'eau (DI: disponible, ND: non disponible)"
+                },
+                derniere_verification: {
+                    bsonType: "date",
+                    description: "Date de la dernière vérification de la source d'eau (peut être null)"
+                },
+                nb_raccordement: {
+                    bsonType: "int",
+                    description: "Nombre de raccordements à la source d'eau (peut être null)"
+                },
+                num_dep: {
+                    bsonType: "int",
+                    description: "Numéro du département où se trouve la source d'eau"
+                }
+            }
+        }
+    }
+});
