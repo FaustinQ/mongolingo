@@ -59,14 +59,20 @@ const Quiz = () => {
     </div>
   );
   
-  if (status === 'finished' || questions.length === 0) return (
-    <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1}} className="text-center p-12 bg-white rounded-3xl shadow-xl border-2 border-slate-100 max-w-lg mx-auto">
-      <Award className="mx-auto text-yellow-400 mb-6" size={80} strokeWidth={1} />
-      <h2 className="text-4xl font-black text-green-600 tracking-tighter mb-4">LEÇON TERMINÉE !</h2>
-      <p className="text-slate-600 text-lg mb-8">Bravo ! Tu as validé 30 requêtes MongoDB. Tu es sur la voie de l'expertise ! 🏆</p>
-      <button onClick={() => window.location.reload()} className="bg-green-500 text-white w-full py-4 rounded-2xl font-black shadow-[0_5px_0_0_#22c55e] hover:bg-green-400">RECOMMENCER</button>
-    </motion.div>
-  );
+  if (!loading && (status === 'finished' || questions.length === 0)) return (
+  <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1}} className="text-center p-12 bg-white rounded-3xl shadow-xl border-2 border-slate-100 max-w-lg mx-auto">
+    <Award className="mx-auto text-yellow-400 mb-6" size={80} strokeWidth={1} />
+    <h2 className="text-4xl font-black text-green-600 tracking-tighter mb-4">LEÇON TERMINÉE !</h2>
+    <p className="text-slate-600 text-lg mb-8">
+      {questions.length === 0 
+        ? "Mince, aucune question n'a été trouvée dans la base de données." 
+        : "Bravo ! Tu as validé 30 requêtes MongoDB. Tu es sur la voie de l'expertise ! "}
+    </p>
+    <button onClick={() => window.location.reload()} className="bg-green-500 text-white w-full py-4 rounded-2xl font-black shadow-[0_5px_0_0_#22c55e] hover:bg-green-400">
+      {questions.length === 0 ? "RÉESSAYER" : "RECOMMENCER"}
+    </button>
+  </motion.div>
+);
 
   const q = questions[step];
   const totalSteps = questions.length;
