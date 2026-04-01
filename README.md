@@ -16,7 +16,7 @@ Suivez ces étapes pour cloner et lancer le projet localement.
 ### 1. Cloner le projet
 Ouvrez votre terminal et récupérez le dépôt :
 ```bash
-git clone [https://github.com/FaustinQ/mongolingo.git](https://github.com/FaustinQ/mongolingo.git)
+git clone https://github.com/FaustinQ/mongolingo.git
 cd mongolingo
 ```
 
